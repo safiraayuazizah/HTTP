@@ -9,6 +9,7 @@ class MovieList extends StatefulWidget {
 }
 
 class _MovieListState extends State<MovieList> {
+  String imgPath = 'https://image.tmdb.org/t/p/w500/';
   int moviesCount;
   List movies;
   HttpService service;
@@ -22,8 +23,6 @@ class _MovieListState extends State<MovieList> {
     });
   }
 
-  String imgPath = 'https://image.tmdb.org/t/p/w500';
-
   @override
   void initState() {
     service = HttpService();
@@ -35,58 +34,51 @@ class _MovieListState extends State<MovieList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Popular Movies",
-            style: TextStyle(fontSize: 24), textAlign: TextAlign.center),
+        title: Text(
+          "Popular Movies",
+        ),
       ),
-      body: ListView.builder(
+      body: GridView.builder(
+          gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 200,
+              childAspectRatio: 3 / 4,
+              crossAxisSpacing: 20,
+              mainAxisSpacing: 20),
           itemCount: (this.moviesCount == null) ? 0 : this.moviesCount,
           itemBuilder: (context, int position) {
+            // return Card(
+            //   color: Colors.white,
+            //   elevation: 2.0,
+            //   child: ListTile(
+            //     title: Text(movies[position].title),
+            //     subtitle: Text(
+            //       'Rating : ' + movies[position].voteAverage.toString(),
+            //     ),
+            //     onTap: () {
+            //       MaterialPageRoute route = MaterialPageRoute(
+            //           builder: (_) => MovieDetail(movies[position]));
+            //       Navigator.push(context, route);
+            //     },
+            //   ),
+            // );
             return Card(
-              color: Colors.teal,
+              color: Colors.white,
               elevation: 2.0,
-              child: ListTile(
+              child: InkWell(
                 onTap: () {
                   MaterialPageRoute route = MaterialPageRoute(
                       builder: (_) => MovieDetail(movies[position]));
                   Navigator.push(context, route);
                 },
-                title: Row(
-                  children: [
-                    SizedBox(
-                        width: 100,
-                        child: ClipRRect(
-                          child: Image.network(
-                            imgPath + movies[position].posterPath,
-                          ),
-                          borderRadius: BorderRadius.circular(10),
-                        )),
-                    Flexible(
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 16, top: 8),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Text(
-                              movies[position].title,
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w600),
-                            ),
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.star,
-                                  size: 12,
-                                ),
-                                Text(" " +
-                                    movies[position].voteAverage.toString()),
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                    )
-                  ],
+                child: Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image:
+                          NetworkImage(imgPath + movies[position].posterPath),
+                      fit: BoxFit.fill,
+                    ),
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
                 ),
               ),
             );

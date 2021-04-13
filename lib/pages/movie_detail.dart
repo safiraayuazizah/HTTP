@@ -50,15 +50,20 @@ class MovieDetail extends StatelessWidget {
                 height: 20,
               ),
               Container(
-                child: Text(
-                  movie.overview,
-                  style: TextStyle(
-                    fontSize: 16,
-                    height: 1.2,
+                  child: Text(
+                    movie.overview,
+                    style: TextStyle(
+                      fontSize: 16,
+                      height: 1.2,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
-                ),
-                padding: EdgeInsets.only(left: 16, right: 16),
+                  padding: EdgeInsets.only(left: 16, right: 16)),
+              Container(
+                padding: EdgeInsets.fromLTRB(8.0, 8.0, 280.0, 4.0),
+                child: Text('Rate : ' + movie.voteAverage.toString(),
+                    style:
+                        TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
               ),
               SizedBox(
                 height: 20,
@@ -67,35 +72,62 @@ class MovieDetail extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: Row(
-        children: <Widget>[
-          Expanded(
-            child: RaisedButton(
-              padding: const EdgeInsets.only(
-                top: 20,
-                bottom: 20,
-              ),
-              onPressed: () {},
-              color: Theme.of(context).primaryColor,
-              textColor: Colors.white,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Icon(
-                    Icons.play_circle_outline,
+      bottomNavigationBar: Row(children: <Widget>[
+        Expanded(
+          child: RaisedButton(
+            padding: const EdgeInsets.only(
+              top: 20,
+              bottom: 20,
+            ),
+            onPressed: () {},
+            color: Theme.of(context).primaryColor,
+            textColor: Colors.white,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                Icon(
+                  Icons.play_circle_outline,
+                ),
+                Text(
+                  'Watch Trailer',
+                  style: TextStyle(
+                    fontSize: 18,
                   ),
-                  Text(
-                    'Watch Trailer',
-                    style: TextStyle(
-                      fontSize: 20,
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
-        ],
-      ),
+        ),
+        Expanded(
+          child: RaisedButton(
+            padding: const EdgeInsets.only(
+              top: 20,
+              bottom: 20,
+            ),
+            onPressed: () {},
+            color: Colors.grey,
+            textColor: Colors.white,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Icon(
+                  Icons.check_circle_outline,
+                ),
+                Container(
+                  height: 5,
+                  width: 5,
+                ),
+                Text(
+                  'Buy Now',
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ]),
     );
   }
 }

@@ -67,62 +67,35 @@ class MovieDetail extends StatelessWidget {
           ),
         ),
       ),
-      bottomNavigationBar: Row(children: <Widget>[
-        Expanded(
-          child: RaisedButton(
-            padding: const EdgeInsets.only(
-              top: 20,
-              bottom: 20,
-            ),
-            onPressed: () {},
-            color: Theme.of(context).primaryColor,
-            textColor: Colors.white,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Icon(
-                  Icons.play_circle_outline,
-                ),
-                Text(
-                  'Watch Trailer',
-                  style: TextStyle(
-                    fontSize: 18,
+      bottomNavigationBar: Row(
+        children: <Widget>[
+          Expanded(
+            child: RaisedButton(
+              padding: const EdgeInsets.only(
+                top: 20,
+                bottom: 20,
+              ),
+              onPressed: () {},
+              color: Theme.of(context).primaryColor,
+              textColor: Colors.white,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Icon(
+                    Icons.play_circle_outline,
                   ),
-                ),
-              ],
+                  Text(
+                    'Watch Trailer',
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-        Expanded(
-          child: RaisedButton(
-            padding: const EdgeInsets.only(
-              top: 20,
-              bottom: 20,
-            ),
-            onPressed: () {},
-            color: Colors.grey,
-            textColor: Colors.white,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Icon(
-                  Icons.check_circle_outline,
-                ),
-                Container(
-                  height: 5,
-                  width: 5,
-                ),
-                Text(
-                  'Buy Now',
-                  style: TextStyle(
-                    fontSize: 18,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ]),
+        ],
+      ),
     );
   }
 }

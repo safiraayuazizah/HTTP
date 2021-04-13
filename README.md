@@ -1,5 +1,8 @@
 # prak9
-
+# halaman movie list
+![hasil](images/1.jpg)
+# halaman movie detail 
+![hasil](images/2.jpg)
 A new Flutter project.
 
 ## Getting Started
